@@ -1,0 +1,77 @@
+{% load static %}
+
+<div class="latestnew">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="col-md-8">
+				<div class="ads">
+					<!-- DB -->
+					{% if news_ad %}
+						<img src="{% static 'movies/images/uploads/' %}{{ news_ad.img_src }}" alt="" width="{{ news_ad.img_width }}" height="{{ news_ad.img_height }}">
+					{% endif %}
+				</div>
+				<div class="title-hd">
+					<h2>Latest news</h2>
+				</div>
+				<div class="tabs">
+				    <div class="tab-content">
+				        <div id="tab31" class="tab active">
+				            <div class="row">
+				            	{% if main_news %}
+									<div class="blog-item-style-1">
+										<img src="{% static 'movies/images/uploads/' %}{{ main_news.img_src }}" alt="{{ main_news.img_alt }}" width="{{ main_news.img_width }}" height="{{ main_news.img_height }}">
+										<div class="blog-it-infor">
+											<h3><a href="#">{{ main_news.title }}</a></h3>
+											<span class="time">{{ main_news.time }}</span>
+											<p>{{ main_news.content }}</p>
+										</div>
+									</div>
+								{% endif %}
+				            </div>
+				        </div>				        
+				    </div>
+				</div>
+				<div class="morenew">
+					<div class="title-hd">
+						<h3>More news on Blockbuster</h3>
+						<a href="#" class="viewall">See all Movies news<i class="ion-ios-arrow-right"></i></a>
+					</div>
+					<div class="more-items">
+						<div class="left">
+							{% for item in more_news|slice:":2" %}
+								<div class="more-it">
+									<h6><a href="#">{{ item.title }}</a></h6>
+									<span class="time">{{ item.time }}</span>
+								</div>
+							{% endfor %}
+						</div>
+
+						<div class="right">
+							{% for item in more_news|slice:"2:4" %}
+								<div class="more-it">
+									<h6><a href="#">{{ item.title }}</a></h6>
+									<span class="time">{{ item.time }}</span>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="sidebar">					
+					<div class="sb-twitter sb-it">
+						<h4 class="sb-title">Tweet to us</h4>
+						<div class="slick-tw">
+							{% for tweet in tweets %}
+								<div class="tweet item" id="">
+									{{ tweet.content }}
+								</div>
+							{% endfor %}
+						</div>					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--end of latest new v1 section-->

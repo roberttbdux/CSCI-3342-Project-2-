@@ -1,0 +1,33 @@
+{% load static %}
+
+<div class="slider movie-items">
+	<div class="container">
+		<div class="row">
+			<div class="social-link">
+				<p>Follow us: </p>
+				{% for link in social_links %}
+					<a href="{{ link.url }}"><i class="{{ link.icon_class }}"></i></a>
+				{% endfor %}
+			</div>
+	    	<div  class="slick-multiItemSlider">
+				<!--  DB  -->
+	    		{% for slider in sliders %}
+					<div class="movie-item">
+						<div class="mv-img">
+							<a href="{{ slider.anchor_url }}">
+								<img src="{% static 'movies/images/uploads/' %}{{ slider.image_src }}" alt="" width="{{ slider.image_width }}" height="{{ slider.image_height }}">
+							</a>
+						</div>
+						<div class="title-in">
+							<div class="cate">
+								<span class="blue"><a href="#">{{ slider.movie_genre }}</a></span>
+							</div>
+							<h6><a href="{{ slider.anchor_url }}">{{ slider.movie_title }}</a></h6>
+							<p><i class="ion-android-star"></i><span>{{ slider.lower_rating }}</span> /{{ slider.upper_rating }}</p>
+						</div>
+					</div>
+				{% endfor %}
+	    	</div>
+	    </div>
+	</div>
+</div>
